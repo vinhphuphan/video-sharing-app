@@ -66,7 +66,7 @@ const End: React.FC<EndProps> = ({ currentUser }) => {
           {isOpen && (
             <div
             // ref={menuRef}
-            className="absolute top-11 left-0 -translate-x-64 z-50 w-[30vw] md:w-[20vw] bg-white shadow-xl border-[1px] rounded-xl overflow-hidden"
+            className="absolute top-11 left-0 z-20 md:-translate-x-32 lg:-translate-x-64 w-[30vw]  md:w-[20vw] bg-white shadow-xl border-[1px] rounded-xl overflow-hidden"
           >
             <div className="flex flex-col">
               <>

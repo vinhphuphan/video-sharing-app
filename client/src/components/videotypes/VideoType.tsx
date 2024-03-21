@@ -8,6 +8,7 @@ import { CiTrophy } from "react-icons/ci";
 import { CgGym } from "react-icons/cg";
 import { GrBitcoin } from "react-icons/gr";
 import TypeCard from "./TypeCard";
+import { usePathname, useSearchParams } from "next/navigation";
 
 export const Videotypes = [
   {
@@ -53,6 +54,16 @@ export const Videotypes = [
 ];
 
 const VideoType = () => {
+  const params = useSearchParams()
+  const videotype = params?.get("type")
+  const pathName = usePathname();
+
+  const isMainPage = pathName === "/"
+
+  if (!isMainPage) {
+    return null;
+  }
+
   return (
     <div className="py-3 flex flex-row items-center justify-between gap-4  overflow-x-auto">
       {
@@ -60,6 +71,7 @@ const VideoType = () => {
             <TypeCard 
                 key={type.id}
                 label={type.label}
+                selected={videotype===type.label}
             />
         ))
       }
