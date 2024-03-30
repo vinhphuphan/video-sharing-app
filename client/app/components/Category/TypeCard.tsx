@@ -1,7 +1,7 @@
 "use client"
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import qs from "query-string"
 
 interface TypeCardProps {
@@ -29,7 +29,7 @@ const TypeCard:React.FC<TypeCardProps> = ({
         }
 
         if (params?.get("type") === label) {
-            delete updatedQuery.label;
+            delete updatedQuery.type;
         }
 
         const url = qs.stringifyUrl(
@@ -38,8 +38,8 @@ const TypeCard:React.FC<TypeCardProps> = ({
                 query : updatedQuery
             },
             {skipNull : true}
-        )
-        router.push(url)
+        );
+        router.push(url);
     }, [params, label, router])
 
     return ( 
@@ -50,11 +50,11 @@ const TypeCard:React.FC<TypeCardProps> = ({
             cursor-pointer transition
             ${selected
             ? "bg-black text-white"
-            : "bg-gray-200 text-black hover:bg-gray-400"
+            : "bg-neutral-100 text-black hover:bg-neutral-300"
             }            
             `}
         >   
-            <div className="text-sm font-[500]">{label}</div>
+            <div className="text-sm font-normal">{label}</div>
         </div>
     );
 }
